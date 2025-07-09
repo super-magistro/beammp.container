@@ -1,0 +1,18 @@
+services:
+  beammp:
+    platform: linux/arm64
+    build: .
+    container_name: beammp
+    ports:
+      - "30814:30814/tcp"
+      - "30814:30814/udp"
+    environment:
+      SERVER_NAME: ${SERVER_NAME}
+      AUTH_KEY: ${AUTH_KEY}
+    volumes:
+      - beammp-data:/beammp/data
+    restart: unless-stopped
+
+volumes:
+  beammp-data:
+
