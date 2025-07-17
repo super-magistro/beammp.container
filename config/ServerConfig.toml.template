@@ -12,7 +12,7 @@ ImScaredOfUpdates = false
 
 [General]
 ResourceFolder = "Resources"
-Map = "/levels/gridmap_v2/info.json"
+Map = “/levels/gridmap_v2/info.json”
 MaxPlayers = 8
 Description = "BeamMP Default Description"
 # Add custom identifying tags to your server to make it easier to find. Format should be TagA,TagB,TagC. Note the comma seperation.

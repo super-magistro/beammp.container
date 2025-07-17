@@ -51,8 +51,18 @@ if [ ! -f "$CONFIG_FILE" ]; then
   cp "$TEMPLATE_FILE" "$CONFIG_FILE"
 
   # Injection des variables d'environnement dans la config
+  sed -i "s|ImScaredOfUpdates = .*|ImScaredOfUpdates = ${NOT_SHOW_IF_UPDATE_AVAILABLE}|" "$CONFIG_FILE"
   sed -i "s|Name = .*|Name = \"${SERVER_NAME}\"|" "$CONFIG_FILE"
   sed -i "s|AuthKey = .*|AuthKey = \"${AUTH_KEY}\"|" "$CONFIG_FILE"
+  sed -i "s|MaxPlayers = .*|MaxPlayers = ${MAX_PLAYERS}|" "$CONFIG_FILE"
+  sed -i "s|Description = .*|Description = \"${DESCRIPTION}\"|" "$CONFIG_FILE"
+  sed -i "s|Tags = .*|Tags = \"${TAGS}\"|" "$CONFIG_FILE"
+  sed -i "s|Private = .*|Private = ${PRIVATE}|" "$CONFIG_FILE"
+  sed -i "s|Debug = .*|Debug = ${DEBUG}|" "$CONFIG_FILE"
+  sed -i "s|Name = .*|Name = \"${NAME}\"|" "$CONFIG_FILE"
+  sed -i "s|LogChat = .*|LogChat = ${LOG_CHAT}|" "$CONFIG_FILE"
+  sed -i "s|MaxCars = .*|MaxCars = ${MAX_CARS}|" "$CONFIG_FILE"
+  sed -i "s|Map = .*|Map = \"${MAP}\"|" "$CONFIG_FILE"
 
   echo "[INFO] Configuration générée avec succès."
 else

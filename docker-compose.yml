@@ -9,6 +9,16 @@ services:
     environment:
       SERVER_NAME: ${SERVER_NAME}
       AUTH_KEY: ${AUTH_KEY}
+      MAX_PLAYERS: ${MAX_PLAYERS}
+      DESCRIPTION: ${DESCRIPTION}
+      TAGS: ${TAGS}
+      PRIVATE: ${PRIVATE}
+      NOT_SHOW_IF_UPDATE_AVAILABLE: ${NOT_SHOW_IF_UPDATE_AVAILABLE}
+      DEBUG: ${DEBUG}
+      NAME: ${NAME}
+      LOG_CHAT: ${LOG_CHAT}
+      MAX_CARS: ${MAX_CARS}
+      MAP: ${MAP}
     volumes:
       - beammp-data:/beammp/data
     restart: unless-stopped
