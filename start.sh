@@ -1,40 +1,40 @@
 #!/bin/bash
 set -e
 
-echo "[INFO] Démarrage du script..."
+echo "[INFO] Starting setup script..."
 
 DATA_DIR="/data"
 TEMPLATE_FILE="/config/ServerConfig.toml.template"
 CONFIG_FILE="${DATA_DIR}/ServerConfig.toml"
 
-# Créer dossier data s'il n'existe pas
+# Create the data directory if it doesn't exist
 mkdir -p "$DATA_DIR"
 
-# Télécharger ou mettre à jour l'exécutable BeamMP-Server
-echo "[INFO] Vérification de la version et téléchargement du serveur..."
+# Download or update BeamMP-Server executable
+echo "[INFO] Checking version and downloading the server if needed..."
 
 LATEST_TAG=$(wget -qO- https://api.github.com/repos/BeamMP/BeamMP-Server/releases/latest | jq -r '.tag_name' 2>/dev/null)
 CURRENT_VERSION=$(find "$DATA_DIR" -maxdepth 1 -type f -name "beamngmp_v*" 2>/dev/null | head -n1 | cut -d'_' -f2)
 
 if [ -z "$LATEST_TAG" ] || [[ "$LATEST_TAG" == "null" ]]; then
-  echo "[WARNING] Impossible de récupérer la dernière version depuis l'API GitHub (peut-être rate-limité)."
+  echo "[WARNING] Could not retrieve the latest version from GitHub API (maybe rate-limited)."
   if [ -z "$CURRENT_VERSION" ]; then
-    echo "[ERROR] Aucune version locale trouvée. Téléchargement impossible sans tag. Abandon."
+    echo "[ERROR] No local version found. Cannot proceed without a tag. Aborting."
     exit 1
   else
-    echo "[INFO] Utilisation de la version locale existante : $CURRENT_VERSION"
+    echo "[INFO] Using existing local version: $CURRENT_VERSION"
     LATEST_TAG="$CURRENT_VERSION"
   fi
 fi
 
 if [ "$CURRENT_VERSION" != "$LATEST_TAG" ]; then
-  echo "[INFO] Téléchargement de la version $LATEST_TAG du serveur BeamMP..."
+  echo "[INFO] Downloading BeamMP server version $LATEST_TAG..."
 
   API_RESPONSE=$(wget -qO- "https://api.github.com/repos/BeamMP/BeamMP-Server/releases/tags/${LATEST_TAG}")
   DL_URL=$(echo "$API_RESPONSE" | jq -r '.assets[] | select(.name | test("BeamMP-Server\\.debian\\.12\\.arm64$")) | .browser_download_url')
 
   if [ -z "$DL_URL" ]; then
-    echo "[ERROR] Impossible de trouver l’URL de téléchargement pour BeamMP-Server ARM64."
+    echo "[ERROR] Could not find download URL for BeamMP-Server ARM64."
     exit 1
   fi
 
@@ -42,15 +42,15 @@ if [ "$CURRENT_VERSION" != "$LATEST_TAG" ]; then
   chmod +x "$DATA_DIR/BeamMP-Server"
   touch "$DATA_DIR/beamngmp_${LATEST_TAG}"
 else
-  echo "[INFO] Serveur BeamMP à jour ($LATEST_TAG)."
+  echo "[INFO] BeamMP server is already up-to-date (v$LATEST_TAG)."
 fi
 
-# Créer la config si elle n'existe pas
+# Create config file from template if it doesn't exist
 if [ ! -f "$CONFIG_FILE" ]; then
-  echo "[INFO] Aucun fichier de configuration détecté, création à partir du template..."
+  echo "[INFO] No config file found. Creating one from template..."
   cp "$TEMPLATE_FILE" "$CONFIG_FILE"
 
-  # Injection des variables d'environnement dans la config
+  # Inject environment variables into the config file
   sed -i "s|ImScaredOfUpdates = .*|ImScaredOfUpdates = ${NOT_SHOW_IF_UPDATE_AVAILABLE}|" "$CONFIG_FILE"
   sed -i "s|Name = .*|Name = \"${SERVER_NAME}\"|" "$CONFIG_FILE"
   sed -i "s|AuthKey = .*|AuthKey = \"${AUTH_KEY}\"|" "$CONFIG_FILE"
@@ -64,11 +64,12 @@ if [ ! -f "$CONFIG_FILE" ]; then
   sed -i "s|MaxCars = .*|MaxCars = ${MAX_CARS}|" "$CONFIG_FILE"
   sed -i "s|Map = .*|Map = \"${MAP}\"|" "$CONFIG_FILE"
 
-  echo "[INFO] Configuration générée avec succès."
+  echo "[INFO] Configuration generated successfully."
 else
-  echo "[INFO] Fichier de configuration existant détecté."
+  echo "[INFO] Existing configuration file detected. Skipping generation."
 fi
 
-echo "[INFO] Lancement du serveur..."
+# Launch the BeamMP server
+echo "[INFO] Launching BeamMP server..."
 cd "$DATA_DIR"
 /data/BeamMP-Server
