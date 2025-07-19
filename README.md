@@ -134,4 +134,4 @@ The BeamMP server itself is developed by the [BeamMP Team](https://beammp.com) a
 ## 🙏 Acknowledgements
 
 Special thanks to the BeamMP developers and community.
-Official documentation: [https://docs.beammp.com/server/](https://docs.beammp.com/server/)
+[Official documentation](https://docs.beammp.com)
