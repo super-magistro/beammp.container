@@ -19,10 +19,10 @@ services:
       LOG_CHAT: ${LOG_CHAT}
       MAX_CARS: ${MAX_CARS}
       MAP: ${MAP}
-    volumes:
-      - beammp-data:/beammp/data
+    #volumes:
+    #  - beammp-data:/beammp/data
     restart: unless-stopped
 
-volumes:
-  beammp-data:
+#volumes:
+#  beammp-data:
 

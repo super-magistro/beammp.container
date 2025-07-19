@@ -3,11 +3,10 @@ set -e
 
 echo "[INFO] Starting setup script..."
 
-DATA_DIR="/data"
-TEMPLATE_FILE="/config/ServerConfig.toml.template"
+DATA_DIR="/beammp/data"
+TEMPLATE_FILE="/beammp/config/ServerConfig.toml.template"
 CONFIG_FILE="${DATA_DIR}/ServerConfig.toml"
 
-# Create the data directory if it doesn't exist
 mkdir -p "$DATA_DIR"
 
 # Download or update BeamMP-Server executable
@@ -50,7 +49,7 @@ if [ ! -f "$CONFIG_FILE" ]; then
   echo "[INFO] No config file found. Creating one from template..."
   cp "$TEMPLATE_FILE" "$CONFIG_FILE"
 
-  # Inject environment variables into the config file
+  # inject environment variables into the config file
   sed -i "s|ImScaredOfUpdates = .*|ImScaredOfUpdates = ${NOT_SHOW_IF_UPDATE_AVAILABLE}|" "$CONFIG_FILE"
   sed -i "s|Name = .*|Name = \"${SERVER_NAME}\"|" "$CONFIG_FILE"
   sed -i "s|AuthKey = .*|AuthKey = \"${AUTH_KEY}\"|" "$CONFIG_FILE"
@@ -72,4 +71,4 @@ fi
 # Launch the BeamMP server
 echo "[INFO] Launching BeamMP server..."
 cd "$DATA_DIR"
-/data/BeamMP-Server
+"$DATA_DIR"/BeamMP-Server
