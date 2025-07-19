@@ -41,7 +41,7 @@ if [ "$CURRENT_VERSION" != "$LATEST_TAG" ]; then
   chmod +x "$DATA_DIR/BeamMP-Server"
   touch "$DATA_DIR/beamngmp_${LATEST_TAG}"
 else
-  echo "[INFO] BeamMP server is already up-to-date (v$LATEST_TAG)."
+  echo "[INFO] BeamMP server is already up-to-date ($LATEST_TAG)."
 fi
 
 # Create config file from template if it doesn't exist
