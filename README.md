@@ -169,7 +169,7 @@ So it will automatically come back online on crash or after host reboot.
 If you prefer pulling from Docker Hub:
 
 ```bash
-sudo docker pull magistro/beammp.container
+sudo docker pull magistro/beammp.container:latest
 ```
 
 You can then run it using your own `docker-compose.yml`.
