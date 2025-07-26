@@ -8,8 +8,10 @@ RUN mkdir -p /beammp/config
 
 COPY start.sh /beammp/start.sh
 COPY config/ServerConfig.toml.template /beammp/config/ServerConfig.toml.template
+COPY build.sh /beammp/build.sh
 RUN chmod +x /beammp/start.sh
+RUN chmod +x /beammp/build.sh
 
-
+CMD ["/beammp/build.sh"]
 CMD ["/beammp/start.sh"]
 

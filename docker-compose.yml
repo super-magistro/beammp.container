@@ -4,8 +4,8 @@ services:
     build: .
     container_name: beammp
     ports:
-      - "${PORT}:${PORT}/tcp"
-      - "${PORT}:${PORT}/udp"
+      - "30814:30814/tcp"
+      - "30814:30814/udp"
     environment:
       SERVER_NAME: ${SERVER_NAME}
       AUTH_KEY: ${AUTH_KEY}
