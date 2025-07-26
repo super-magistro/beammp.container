@@ -28,3 +28,6 @@ services:
 #volumes:
 #  beammp-data:
 
+    labels:
+      com.magistro.author: "super-magistro"
+      com.magistro.project: "BeamMP ARM64 Docker container"

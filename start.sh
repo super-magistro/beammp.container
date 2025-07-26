@@ -73,3 +73,5 @@ fi
 echo "[INFO] Launching BeamMP server..."
 cd "$DATA_DIR"
 "$DATA_DIR"/BeamMP-Server
+
+#made by super-magistro

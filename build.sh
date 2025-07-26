@@ -25,3 +25,5 @@ sed -i "/^\s*environment:/i \    ports:\n      - \"${PORT}:${PORT}/tcp\"\n      
 docker compose build --no-cache
 
 echo "[Info] docker-compose.yml updated with port $PORT and image rebuilt."
+
+# made by super-magistro
