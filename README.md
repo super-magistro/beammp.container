@@ -121,7 +121,7 @@ These folders are mounted automatically and used by the BeamMP server.
 
 ## 🗺️ Supported Maps
 
-You can use any BeamNG level path as the `MAP` value in `.env` and many others with `/mods`:
+You can use any BeamNG level path as the `MAP` value in `.env` and [many others](https://www.beamng.com/resources/categories/terrains-levels-maps.9) with `/mods`:
 
 ```txt
 /levels/west_coast_usa/info.json
