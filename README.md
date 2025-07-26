@@ -54,7 +54,7 @@ PORT=16383               # External port to expose your server (default is 30814
 ### 3. Launch the server
 
 ```bash
-docker-compose up -d --build
+sudo docker compose up -d --build
 ```
 
 The server will be available on the port specified by `PORT` (both TCP and UDP).
