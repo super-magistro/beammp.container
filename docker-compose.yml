@@ -4,8 +4,8 @@ services:
     build: .
     container_name: beammp
     ports:
-      - "30814:30814/tcp"
-      - "30814:30814/udp"
+      - "${PORT}:${PORT}/tcp"
+      - "${PORT}:${PORT}/udp"
     environment:
       SERVER_NAME: ${SERVER_NAME}
       AUTH_KEY: ${AUTH_KEY}
@@ -19,6 +19,7 @@ services:
       LOG_CHAT: ${LOG_CHAT}
       MAX_CARS: ${MAX_CARS}
       MAP: ${MAP}
+      PORT: ${PORT}
     volumes:
       - ./mods/Server:/beammp/data/Resources/Server
       - ./mods/Client:/beammp/data/Resources/Client

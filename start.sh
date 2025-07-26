@@ -62,6 +62,7 @@ if [ ! -f "$CONFIG_FILE" ]; then
   sed -i "s|LogChat = .*|LogChat = ${LOG_CHAT}|" "$CONFIG_FILE"
   sed -i "s|MaxCars = .*|MaxCars = ${MAX_CARS}|" "$CONFIG_FILE"
   sed -i "s|Map = .*|Map = \"${MAP}\"|" "$CONFIG_FILE"
+  sed -i "s|Port = .*|Port = ${PORT}|" "$CONFIG_FILE"
 
   echo "[INFO] Configuration generated successfully."
 else
