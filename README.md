@@ -1,5 +1,5 @@
-# 🛻 beammp.container
-
+# Beammp.container
+![beammp](https://c10.patreonusercontent.com/4/patreon-media/p/campaign/661801/1367c3e61e524d2abfa6a53c23b3f8ae/eyJ3IjoxOTIwLCJ3ZSI6MX0%3D/8.png?token-hash=rrhg9uWO1Q_7gNrGz9-x3o3mlwLt31JuYAG6vdg6Hrc%3D&token-time=1754265600)
 Here’s a straightforward Docker setup to run the BeamMP server for BeamNG.drive  
 on **ARM64** platforms like Raspberry Pi or ARM-based servers.
 
@@ -8,7 +8,7 @@ It is ideal for self-hosted BeamMP servers with minimal setup.
 
 ---
 
-## 🧱 Project Contents
+## Project Contents
 
 - `Dockerfile` – Based on Debian 12, installs required dependencies
 - `start.sh` – Smart launch script that:
@@ -134,4 +134,4 @@ The BeamMP server itself is developed by the [BeamMP Team](https://beammp.com) a
 ## 🙏 Acknowledgements
 
 Special thanks to the BeamMP developers and community.
-Official documentation: [https://docs.beammp.com/server/](https://docs.beammp.com/server/)
+[Official documentation](https://docs.beammp.com)
